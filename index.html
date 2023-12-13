@@ -3,28 +3,111 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Random Quote Generator</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        .white-box {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .quote {
+            margin-bottom: 20px;
+        }
+
+        .random-quote {
+            font-size: 24px;
+            font-style: italic;
+        }
+
+        .random-author {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button i {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Random Quote Generator</h1>
     <div class="white-box">
         <div class="quote">
-          <i class="fa fa-quote-left fa-3x"></i> 
-          <p class="random-quote"> <span id="text"></span></p>
+            <i class="fa fa-quote-left fa-3x"></i>
+            <p class="random-quote"> <span id="text"></span></p>
         </div>
-        <div class="random-author">- <span id="author"></span>
+        <div class="random-author">- <span id="author"></span></div>
+        <div class="buttons">
+            <a id="tweet" href="https://twitter.com/intent/tweet" title="Tweet this!">
+                <button class="button"><i class="fa fa-twitter"></i></button>
+            </a>
+            <div class="new-quote-button">
+                <button class="button" id="new-quote">New Quote</button>
+            </div>
         </div>
-        <div class= "buttons">
-      
-      <a id="tweet" href="https://twitter.com/intent/tweet" title="Tweet this!"><button class= "button"><i class= "fa fa-twitter"></i></button></a>
-      
-          <div class= "new-quote-button" >
-          <button class="button" id="new-quote"> New Quote
-          </div>
-        </div>
-      </div>
+    </div>
+    <script>
+        // JavaScript code starts here
+        const quoteContainer = document.getElementById('text');
+        const authorContainer = document.getElementById('author');
+        const newQuoteButton = document.getElementById('new-quote');
+
+        // Array of quotes
+        const quotes = [
+            {
+                text: "Quote 1",
+                author: "Author 1"
+            },
+            {
+                text: "Quote 2",
+                author: "Author 2"
+            },
+            // Add more quotes here
+        ];
+
+        // Function to generate a random quote
+        function generateRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+            quoteContainer.innerText = quote.text;
+            authorContainer.innerText = quote.author;
+        }
+
+        // Event listener for the new quote button
+        newQuoteButton.addEventListener('click', generateRandomQuote);
+
+        // Initial quote generation
+        generateRandomQuote();
+    </script>
 </body>
 </html>
